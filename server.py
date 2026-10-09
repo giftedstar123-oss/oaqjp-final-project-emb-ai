@@ -16,7 +16,10 @@ def emotion_detector_route():
     if not text_to_analyze.strip():
         return "Please enter a statement to analyze."
 
-    response = emotion_detector(text_to_analyze)
+    try:
+        response = emotion_detector(text_to_analyze)
+    except Exception:
+        return "Unable to connect to the emotion detection service. Please try again."
 
     if response is None:
         return "Unable to detect emotions. Please try again."
