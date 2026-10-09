@@ -9,22 +9,17 @@ return render_template(“index.html”)
 
 @app.route(”/emotionDetector”)
 def emotion_detector_route():
-text_to_analyze = request.args.get(“textToAnalyze”)
-response = emotion_detector(text_to_analyze)
+text_to_analyze = request.args.get(“textToAnalyze”, “”)
+if not text_to_analyze.strip():
+return “Please enter a statement to analyze.”
 
+response = emotion_detector(text_to_analyze)
 if response is None:
     return "Unable to detect emotions. Please try again."
-anger = response["anger"]
-disgust = response["disgust"]
-fear = response["fear"]
-joy = response["joy"]
-sadness = response["sadness"]
 dominant_emotion = response["dominant_emotion"]
 return (
-    f"For the given statement, the system response is "
-    f"'anger': {anger}, 'disgust': {disgust}, "
-    f"'fear': {fear}, 'joy': {joy}, 'sadness': {sadness}. "
-    f"The dominant emotion is {dominant_emotion}."
+    f"For the given statement, the dominant emotion is "
+    f"{dominant_emotion}."
 )
 
 if name == “main”:
