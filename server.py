@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
- from EmotionDetection.emotion_detection import emotion_detector
+from EmotionDetection.emotion_detection import emotion_detector
 app = Flask(name)
 @app.route(”/”)
  def index():
