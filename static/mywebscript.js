@@ -1,20 +1,19 @@
 function RunSentimentAnalysis() {
-const textToAnalyze = document.getElementById(“textToAnalyze”).value.trim();
-const output = document.getElementById(“system_response”);
+var textToAnalyze = document.getElementById(“textToAnalyze”).value.trim();
+var output = document.getElementById(“system_response”);
 
-if (!textToAnalyze) {
+if (textToAnalyze === "") {
     output.textContent = "Please enter some text to analyze.";
     return;
 }
 output.textContent = "Analyzing your text...";
-const xhttp = new XMLHttpRequest();
+var xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function () {
-    if (this.readyState === 4) {
-        if (this.status === 200) {
-            output.textContent = this.responseText;
+    if (xhttp.readyState === 4) {
+        if (xhttp.status === 200) {
+            output.textContent = xhttp.responseText;
         } else {
-            output.textContent =
-                "The request failed. Please try again. Error: " + this.status;
+            output.textContent = "Request failed. Error: " + xhttp.status;
         }
     }
 };
