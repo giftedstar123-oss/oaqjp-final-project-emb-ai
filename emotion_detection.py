@@ -19,17 +19,15 @@ def emotion_detector(text_to_analyze):
     }
 
     response = requests.post(
-    url,
-    json=payload,
-    headers=headers,
-    timeout=10
-)
+        url,
+        json=payload,
+        headers=headers,
+        timeout=10
+    )
 
     if response.status_code == 200:
         result = response.json()
-
         emotions = result["emotionPredictions"][0]["emotion"]
-
         dominant_emotion = max(emotions, key=emotions.get)
 
         return {
