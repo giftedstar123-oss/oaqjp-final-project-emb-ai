@@ -19,10 +19,11 @@ def emotion_detector(text_to_analyze):
     }
 
     response = requests.post(
-        url,
-        json=payload,
-        headers=headers
-    )
+    url,
+    json=payload,
+    headers=headers,
+    timeout=10
+)
 
     if response.status_code == 200:
         result = response.json()
