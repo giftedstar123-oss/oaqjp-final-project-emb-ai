@@ -1,5 +1,5 @@
 function RunSentimentAnalysis() {
-var textToAnalyze = document.getElementById(“textToAnalyze”).value.trim();
+var textToAnalyze = document.getElementById("textToAnalyze").value.trim();
 var output = document.getElementById(“system_response”);
 
 if (textToAnalyze === "") {
